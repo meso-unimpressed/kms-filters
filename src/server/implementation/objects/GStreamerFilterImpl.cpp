@@ -87,11 +87,6 @@ GStreamerFilterImpl::GStreamerFilterImpl (const boost::property_tree::ptree
     }
 
     throw KurentoException (MARSHALL_ERROR, error_str);
-  } else if (GST_IS_BIN (filter) ) {
-    g_object_unref (filter);
-
-    throw KurentoException (MARSHALL_ERROR,
-                            "Given command is not valid, only one element can be created");
   }
 
   g_object_set (element, "filter", filter, NULL);
