@@ -69,7 +69,7 @@ GStreamerFilterImpl::GStreamerFilterImpl (const boost::property_tree::ptree
     break;
   }
 
-  filter = gst_parse_launch (command.c_str(), &error);
+  filter = gst_parse_bin_from_description (command.c_str(), true, &error);
 
   if (filter == nullptr || error != nullptr) {
     std::string error_str = "GStreamer element cannot be created";
